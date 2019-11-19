@@ -1,0 +1,37 @@
+#committee
+{
+background: transparent !important;
+}
+.committee-heading
+{
+
+text-align:center;
+color:white;
+background:blue;
+font-weight:bold;
+font-size:20px;
+margin:3%;
+}
+.committee-content
+{
+font-size:15px;
+color:white;
+padding:1%;
+text-align:center;
+}
+
+
+.aboutus-content
+{
+font-size:15px;
+color:black;
+padding:2% 3% 0;
+}
+.section-header
+{
+margin:0px
+
+}
+.comittee-plx{
+    padding: 5px;
+}

@@ -12,8 +12,8 @@ $(document).ready(function(){
     $(".regframe").hide();  
    })
    $(document).dblclick(function(){
-    $(".loginframe").hide();
-    $(".regframe").hide();
+    // $(".loginframe").hide();
+    // $(".regframe").hide();
    })
 $(".lgfromreg").click(function(){
     $(".loginframe").show(); 

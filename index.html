@@ -30,10 +30,16 @@
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/login-signup.css">
-<script src="./js/login-process.js"></script>
+  <link rel="stylesheet" href="./css/committee.css">	
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="./js/login-process.js"></script>
+<script src="./js/signup-process.js"></script>
+
 </head>
 
 <body>
+  <!-- login popup -->
     <div class="loginframe">
 
         <div class="row">
@@ -74,60 +80,103 @@
               <!-- regpopup -->
         <div class="regframe">
           <div class="row">
-            <div class="col-lg-4"></div>
-            <div class="col-lg-4">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
                 <div class="card bg-light">
                     <div class="closebtn text-danger ">&times;</div>
-                    <article class="card-body mx-auto" style="max-width: 400px;">
+                    <article class="card-body mx-auto" >
                       <h4 class="card-title mt-3 text-center">Create Account</h4>
                     
-                      <form>
-                        
+                      <form method="POST" onsubmit="return register(this)">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                             </div>
+                            <input name="name" class="form-control" placeholder="Full name" type="text" required>
+                          </div> 
+                          <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                            </div>
+                            <select class="custom-select" style="max-width: 70px;" name="country_code">
+                              <option selected="">+91</option>
+                              <option selected="">+01</option>                              
+                            </select>
+                            <input name="mobile_no" class="form-control" placeholder="Phone number" type="number" min="1000000000" max="9999999999" required>
+                          </div>
+                          <div class="form-group input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-globe"></i> </span>
+                               </div>
+                              <input name="country" class="form-control" placeholder="country" type="text" required>
+                            </div> 
+                             <!-- form-group// -->
                       <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                         </div>
-                        <input name="" class="form-control" placeholder="Full name" type="text">
-                      </div> <!-- form-group// -->
-                      <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                         </div>
-                        <input name="" class="form-control" placeholder="Email address" type="email">
-                      </div> <!-- form-group// -->
-                      <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user-circle"></i> </span>
+                          </div>
+                          <input name="author" class="form-control" placeholder="author" type="text">
+                        </div> <!-- form-group// -->  
+                        <!-- pass -->
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                            </div>
+                            <input class="form-control" placeholder="Create password" type="password" required>
+                          </div>
+                          <!-- ////////// -->
                         </div>
-                        <select class="custom-select" style="max-width: 120px;">
-                          <option selected="">+91</option>
+                          <div class="col-md-6">
+                            <div class="form-group input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                               </div>
+                              <input name="email" class="form-control" placeholder="Email address" type="email" required>
+                            </div>
+                            <div class="form-group input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                              </div>
+                              <select class="form-control" required>
+                                <option selected=""> Select catagory</option>
+                                <option value="Research scholar">Research scholar</option>
+                                <option value="full time student">full time student</option>
+                                <option value="faculty">faculty</option>
+                                <option value="industry represntative">industry represntative</option>
+                              </select>
+                            </div>
+                            <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"> <i class="fa fa-home"></i> </span>
+                                 </div>
+                                <input name="state" class="form-control" placeholder="state" type="text" required>
+                              </div> 
+                              <div class="form-group input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-user-circle"></i> </span>
+                                  </div>
+                                  <input  name="sub_author" class="form-control" placeholder="sub author" type="text" required>
+                                </div>
+                              
+                               <!-- form-group// -->
+                      <div class="form-group input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                          </div>
+                          <input class="form-control" placeholder="Repeat password" type="password" name="repass" required>
+                        </div> <!-- form-group// -->  
+                          </div>
                           
-                        </select>
-                        <input name="" class="form-control" placeholder="Phone number" type="text">
-                      </div> <!-- form-group// -->
-                      <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"> <i class="fa fa-building"></i> </span>
                         </div>
-                        <select class="form-control">
-                          <option selected=""> Select job type</option>
-                          <option>Designer</option>
-                          <option>Manager</option>
-                          <option>Accaunting</option>
-                        </select>
-                      </div> <!-- form-group end.// -->
-                      <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                        </div>
-                        <input class="form-control" placeholder="Create password" type="password">
-                      </div> <!-- form-group// -->
-                      <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                        </div>
-                        <input class="form-control" placeholder="Repeat password" type="password">
-                      </div> <!-- form-group// -->                                      
+                      <!-- form-group// -->
+                       <!-- form-group// -->
+                       <!-- form-group// -->
+                       <!-- form-group end.// -->
+                       <div class="form-group">
+                          <textarea name="address" id="address"  rows="2" placeholder="address" class="form-control" required></textarea>
+                        </div>                                  
                       <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
                       </div> <!-- form-group// -->      
@@ -139,7 +188,7 @@
                     </div> 
         
             </div>
-            <div class="col-lg-4"></div>
+            <div class="col-lg-3"></div>
           </div>
         </div>
   <div class="popfirst">
@@ -308,8 +357,39 @@
       <div class="row">
         <div class="col-md-12  aboutus-section-1 jumbotron-fluid justify-content-around bg-white">
             <div class="row">
-                <div class="col text-sm-center">
-                  <div class="pricing_section_title text-dark text-sm-center" style="font-size: 20px;">ABOUT ITS</div>
+                <div class="col ">
+                  <!--  <div class="pricing_section_title text-dark" style="font-size: 20px;">ABOUT ITS<br></div> -->
+			 <div class="section-header">
+       			     <h2>About I.T.S The Education Group</h2>
+        		    </div>
+			 <div class="aboutus-content">
+				<p>
+				•	I.T.S - The Education Group is a 23 years old leading educational group of the country. Its various programmes are NBA accredited & NAAC (A-Grade) accredited. ISO 9001:2008 certified group offers 20 courses to its 8000 students in its 8 Institutes spread over 4 campuses, endowed with state-of-the-art infrastructure, all modern facilities and more than 700 distinguished faculty members.
+			<br><br>	•	I.T.S - The Education Group is a renowned and established educational group offering programmes in Management, IT, Dental, Engineering, Pharmacy, Biotechnology and Physiotherapy. PGDM programme offered by I.T.S is equivalent to MBA as certified by the Association of Indian University (AIU) which is a rare recognition given to any such programmes in India.
+			<br><br>	•	I.T.S supplements education with its CSR activities offering help, care and guidance to the downtrodden and unprivileged segments of the society. I.T.S-The Education Group offers nonprofit medical care to society through its two, 100 bedded fully equipped multi-speciality hospitals
+				</p>
+			</div>	
+				<div class="section-header">
+       			     <h2>About Institute of Technology & Science (I.T.S):</h2>
+        		    </div>
+			 <div class="aboutus-content">
+				<p>
+					Institute of Technology and Science was established in the year 1995 with a view to impart quality education in the field of Management and Information Technology. Institute offers professional education through well accredited courses. It offers Post Graduate Diploma in Management (PGDM, 2 Yrs, NBA accredited), Masters of Business Administration (MBA, 2Yrs) and Masters of Computer Application (MCA, 3 Yrs, NBA accredited) and Masters of Computer Application (MCA, 2 Yrs, NBA accredited). I.T.S  boasts unparallel infrastructure which is evident from Institute's consistent high ranking on infrastructure parameter. Intellectual Capital at the Institute lies in eminent and experienced faculty members. The Institute is committed to provide practice-oriented learning and a contemporary industry-focused curriculum, driven by strong industry interface. We foster all round development and enhancement of knowledge base in our students through various extra-curricular, co-curricular and curricular activities. Our bright young students have proved themselves and have embarked upon promising careers in the corporate world.
+
+<br><br>
+Institute of Technology and Science is consistently working towards<b> Creating Thinking Professional Order and contributing towards society at large with imparting valuable knowledge.</b>
+			       </p>
+			</div>
+	<div class="section-header">
+       			     <h2>About Department of IT</h2>
+        		    </div>
+		<div class="aboutus-content">
+				<p>
+				The Department of IT offers MCA-3year and MCA direct admission to 02 years courses. The first batch of MCA was commenced in 1997 with its first batch with total intake of 30 affiliated to C.C.S University, Meerut. After establishment of UP Technical University in 2000, the MCA course was transferred to it which is now renamed as Dr.A.P.J Abdul Kalam Technical University, Lucknow.<br><br>	
+				With a strong team of well qualified and competent faculty members headed by Dr. Sunil Kr. Pandey, Director(IT), is continuously engaged in overall development of students through academic rigor and its unique events and activities including CXO Meet, CEO MEET, ICT Summit, Digital Conclave, IT-SUMMITs, Seminars, National & International Conferences, Workshops, Industry Visit, Inter-Institutional  fest, Alumni Reunion and innovative teaching learning practices<br><br>
+				The Department also looks after creating, upgrading and maintaining one of the best IT infrastructures in the vicinity. In last two years the entire IT Infrastructure have been upgraded with latest Configuration of Computers, fully automated cloud based wi-fi network, Racked Server rooms with latest Server equipped with proper security system to protect Networks from any vulnerability. The computer center also ensures the seamless secure Internet connectivity that caters to the need of all the users of the Institute. 			      
+                                </p>
+			</div>
                 </div>
               </div>		
           </div>
@@ -318,8 +398,18 @@
         <div class="row">
             <div class="col-md-12  aboutus-section-2 jumbotron-fluid justify-content-around bg-white">
                 <div class="row">
-                    <div class="col text-sm-center">
-                      <div class="pricing_section_title text-dark text-sm-center" style="font-size: 20px;">ABOUT cCONFRENCES</div>
+                    <div class="col">
+                    <!--  <div class="pricing_section_title text-dark text-sm-center" style="font-size: 20px;">ABOUT CONFRENCES</div>-->
+			   <div class="section-header">
+       			     <h2>ABOUT CONFRENCES</h2>
+        		    </div>
+			    <div class="aboutus-content">
+				<p>We are pleased to welcome you to 2020 National Conference on "Next Generation Computing Technologies and their role in Nation Development" (NGCTND) which will be held in Institute of Technology & Science, Ghaziabad, UP India during 19th - 20th March 2020. The aim of multidisciplinary conference (NGCTND-2019) is to bring
+academicians, researchers, scholars, professionals, executives and practitioners
+of different disciplines together, to discuss and deliberate on new ideas and issues,
+finding out the solution for real environment problems breeding new trends on the theme of the conference i.e. Next Generation Computing Technologies and their role in Nation Development
+</p>
+			</div>
                     </div>
                   </div>		
               </div>
@@ -780,7 +870,7 @@
     <!--==========================
       Sponsors Section
     ============================-->
-    <!-- <section id="supporters" class="section-with-bg wow fadeInUp">
+    <section id="supporters" class="section-with-bg wow fadeInUp">
 
       <div class="container">
         <div class="section-header">
@@ -841,7 +931,7 @@
 
       </div>
 
-    </section> -->
+    </section>
 
     <!--==========================
       F.A.Q Section
@@ -966,122 +1056,155 @@
     <!--==========================
       Buy Ticket Section
     ============================-->
-    <!-- <section id="buy-tickets" class="section-with-bg wow fadeInUp">
-      <div class="container">
-
-        <div class="section-header">
-          <h2>Buy Tickets</h2>
-          <p>Velit consequatur consequatur inventore iste fugit unde omnis eum aut.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="card mb-5 mb-lg-0">
-              <div class="card-body">
-                <h5 class="card-title text-muted text-uppercase text-center">Standard Access</h5>
-                <h6 class="card-price text-center">$150</h6>
-                <hr>
-                <ul class="fa-ul">
-                  <li><span class="fa-li"><i class="fa fa-check"></i></span>Regular Seating</li>
-                  <li><span class="fa-li"><i class="fa fa-check"></i></span>Coffee Break</li>
-                  <li><span class="fa-li"><i class="fa fa-check"></i></span>Custom Badge</li>
-                  <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Community Access</li>
-                  <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Workshop Access</li>
-                  <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>After Party</li>
-                </ul>
-                <hr>
-                <div class="text-center">
-                  <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="standard-access">Buy Now</button>
+    <section id="buy-tickets" class="section-with-bg wow fadeInUp">
+        <div class="container">
+  
+          <div class="section-header">
+            <h2>Buy Tickets</h2>
+            <p>Velit consequatur consequatur inventore iste fugit unde omnis eum aut.</p>
+          </div>
+  
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card mb-5 mb-lg-0">
+                <div class="card-body">
+                  <h5 class="card-title text-muted text-uppercase text-center">Standard Access</h5>
+                  <h6 class="card-price text-center">$150</h6>
+                  <hr>
+                  <ul class="fa-ul">
+                    <li><span class="fa-li"><i class="fa fa-check"></i></span>Regular Seating</li>
+                    <li><span class="fa-li"><i class="fa fa-check"></i></span>Coffee Break</li>
+                    <li><span class="fa-li"><i class="fa fa-check"></i></span>Custom Badge</li>
+                    <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Community Access</li>
+                    <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Workshop Access</li>
+                    <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>After Party</li>
+                  </ul>
+                  <hr>
+                  <div class="text-center">
+                    <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="standard-access">Buy Now</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card mb-5 mb-lg-0">
-              <div class="card-body">
-                <h5 class="card-title text-muted text-uppercase text-center">Pro Access</h5>
-                <h6 class="card-price text-center">$250</h6>
-                <hr>
-                <ul class="fa-ul">
-                  <li><span class="fa-li"><i class="fa fa-check"></i></span>Regular Seating</li>
-                  <li><span class="fa-li"><i class="fa fa-check"></i></span>Coffee Break</li>
-                  <li><span class="fa-li"><i class="fa fa-check"></i></span>Custom Badge</li>
-                  <li><span class="fa-li"><i class="fa fa-check"></i></span>Community Access</li>
-                  <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Workshop Access</li>
-                  <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>After Party</li>
-                </ul>
-                <hr>
-                <div class="text-center">
-                  <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="pro-access">Buy Now</button>
+            <div class="col-lg-4">
+              <div class="card mb-5 mb-lg-0">
+                <div class="card-body">
+                  <h5 class="card-title text-muted text-uppercase text-center">Pro Access</h5>
+                  <h6 class="card-price text-center">$250</h6>
+                  <hr>
+                  <ul class="fa-ul">
+                    <li><span class="fa-li"><i class="fa fa-check"></i></span>Regular Seating</li>
+                    <li><span class="fa-li"><i class="fa fa-check"></i></span>Coffee Break</li>
+                    <li><span class="fa-li"><i class="fa fa-check"></i></span>Custom Badge</li>
+                    <li><span class="fa-li"><i class="fa fa-check"></i></span>Community Access</li>
+                    <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>Workshop Access</li>
+                    <li class="text-muted"><span class="fa-li"><i class="fa fa-times"></i></span>After Party</li>
+                  </ul>
+                  <hr>
+                  <div class="text-center">
+                    <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal" data-ticket-type="pro-access">Buy Now</button>
+                  </div>
                 </div>
               </div>
             </div>
+            <!-- Pro Tier -->
+       <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">Premium Access</h5>
+            <h6 class="card-price text-center">$350</h6>
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Regular Seating</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Coffee Break</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Custom Badge</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Community Access</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Workshop Access</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>After Party</li>
+            </ul>
+            <hr>
+            <div class="text-center">
+              <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal"
+                data-ticket-type="premium-access">Buy Now</button>
+            </div>
+  
           </div>
-          <!-- Pro Tier -->
-    <!-- <div class="col-lg-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title text-muted text-uppercase text-center">Premium Access</h5>
-          <h6 class="card-price text-center">$350</h6>
-          <hr>
-          <ul class="fa-ul">
-            <li><span class="fa-li"><i class="fa fa-check"></i></span>Regular Seating</li>
-            <li><span class="fa-li"><i class="fa fa-check"></i></span>Coffee Break</li>
-            <li><span class="fa-li"><i class="fa fa-check"></i></span>Custom Badge</li>
-            <li><span class="fa-li"><i class="fa fa-check"></i></span>Community Access</li>
-            <li><span class="fa-li"><i class="fa fa-check"></i></span>Workshop Access</li>
-            <li><span class="fa-li"><i class="fa fa-check"></i></span>After Party</li>
-          </ul>
-          <hr>
-          <div class="text-center">
-            <button type="button" class="btn" data-toggle="modal" data-target="#buy-ticket-modal"
-              data-ticket-type="premium-access">Buy Now</button>
-          </div>
-
         </div>
+      </div> 
+     </div>
+  
       </div>
-    </div> -->
-    </div>
-
-    </div>
-
-    <!-- Modal Order Form -->
-    <!-- <div id="buy-ticket-modal" class="modal fade">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Buy Tickets</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+  
+      <!-- Modal Order Form -->
+       <div id="buy-ticket-modal" class="modal fade">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Buy Tickets</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form method="POST" action="#">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="your-name" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="your-email" placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                  <select id="ticket-type" name="ticket-type" class="form-control">
+                    <option value="">-- Select Your Ticket Type --</option>
+                    <option value="standard-access">Standard Access</option>
+                    <option value="pro-access">Pro Access</option>
+                    <option value="premium-access">Premium Access</option>
+                  </select>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn">Buy Now</button>
+                </div>
+              </form>
+            </div> 
+           </div><!--/.modal-content -->
+        </div> <!--/.modal-dialog -->
+      </div><!-- /.modal -->
+  
+      </section> 
+     <!--==========================
+        Committee Members Section
+      ============================-->
+      <div class="parallax_background parallax-window comittee-plx" data-parallax="scroll" data-image-src="./assets/images/pricing.jpg"
+      data-speed="0.8">
+    <section id="committee">
+       <div class="container">
+      <div class="section-header">
+            <h2>COMMITTEE</h2>
+            <p>Here is our committee members</p>
           </div>
-          <div class="modal-body">
-            <form method="POST" action="#">
-              <div class="form-group">
-                <input type="text" class="form-control" name="your-name" placeholder="Your Name">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="your-email" placeholder="Your Email">
-              </div>
-              <div class="form-group">
-                <select id="ticket-type" name="ticket-type" class="form-control">
-                  <option value="">-- Select Your Ticket Type --</option>
-                  <option value="standard-access">Standard Access</option>
-                  <option value="pro-access">Pro Access</option>
-                  <option value="premium-access">Premium Access</option>
-                </select>
-              </div>
-              <div class="text-center">
-                <button type="submit" class="btn">Buy Now</button>
-              </div>
-            </form>
-          </div> -->
-        <!-- </div>/.modal-content -->
-      <!-- </div>/.modal-dialog -->
-    <!-- </div>/.modal -->
-
-    </section> -->
-
+        
+        <div class="row committee-heading">
+        <div class="col-md-12"> PATRON </div>
+             </div>
+       <div class="row committee-content">
+        <div class="col-md-3"><b>Dr. R.P Chadha</b> <br> Chairman<br> I.T.S - The Education Group </div>
+        <div class="col-md-3"><b>Shri. Arpit Chadha</b> <br> Vice Chairman<br> I.T.S - The Education Group </div>
+              <div class="col-md-3"><b> Shri B.K Arora</b> <br> Secretary<br> I.T.S - The Education Group </div> 
+        <div class="col-md-3"><b>Shri S.K Sood</b><br> Director(PR)<br> I.T.S - The Education Group </div>
+      </div>
+      
+       <div class="row committee-heading">
+        <div class="col-md-12">CONVENER </div>
+        
+             </div>
+       <div class="row committee-content">
+        <div class="col-md-12"><b>Dr. Sunil Kr. Pandey</b><br> Director IT<br> I.T.S Mohan Nagar ,Ghaziabad </div>
+        
+             </div>
+      
+       </div>
+    </section>
+    </div>
     <!--==========================
       Contact Section
     ============================-->
@@ -1238,8 +1361,7 @@
   <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 
   <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
+ 
   <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="lib/easing/easing.min.js"></script>
   <script src="lib/superfish/hoverIntent.js"></script>
@@ -1253,6 +1375,7 @@
   <script src="contactform/contactform.js"></script>
   <script src="js/parallax-js-master/parallax.min.js"></script>
 <script src="./js/login-signup.js"></script>
+
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
 </body>
